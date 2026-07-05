@@ -1,8 +1,15 @@
-# CalorieSnap 📸🍽️
+# LidarBite 📸🍽️
 
-Take a photo of your food on your iPhone → a backend container on your Komodo
-stack sends it to **Claude's vision model** → you get calories + macros logged to
-Postgres, with daily totals against your goal.
+Put your food on a scale, take one photo on your iPhone → the app measures the
+food's **volume with LiDAR**, Claude **reads the scale weight** off the display,
+and a backend container on your Komodo stack turns it into calories + macros,
+logged to Postgres with daily totals against your goal.
+
+> **The trick:** weight + LiDAR volume together give *density*, which pins down
+> both the portion size and what the food is — the two biggest sources of error
+> in photo calorie tracking. Set your plate's weight once (tare) and you don't
+> even have to zero the scale. *(The app label reads "CalorieSnap"; the project/
+> repo is LidarBite.)*
 
 ```
 iPhone (SwiftUI)  ──photo──▶  FastAPI container  ──▶  Claude vision (Anthropic API)
