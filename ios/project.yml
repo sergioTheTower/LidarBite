@@ -1,0 +1,31 @@
+# Generates CalorieSnap.xcodeproj with XcodeGen (`brew install xcodegen && xcodegen`).
+# If you don't want XcodeGen, create a new iOS App in Xcode, drag in the
+# CalorieSnap/*.swift files, and add the Info.plist keys listed below.
+
+name: CalorieSnap
+options:
+  bundleIdPrefix: com.sergio
+  deploymentTarget:
+    iOS: "17.0"
+
+targets:
+  CalorieSnap:
+    type: application
+    platform: iOS
+    sources:
+      - CalorieSnap
+    info:
+      path: CalorieSnap/Info.plist
+      properties:
+        CFBundleDisplayName: CalorieSnap
+        UILaunchScreen: {}
+        NSCameraUsageDescription: "CalorieSnap uses the camera to photograph your meals for calorie estimation."
+        NSPhotoLibraryUsageDescription: "CalorieSnap lets you pick meal photos from your library."
+        # Allows plain-HTTP to a self-hosted server. Prefer HTTPS in production and remove this.
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: true
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: NO
+        PRODUCT_BUNDLE_IDENTIFIER: com.sergio.caloriesnap
